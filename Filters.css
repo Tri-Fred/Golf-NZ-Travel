@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Make the container span the full width of the page */
+    max-width: 1200px; /* Adjust as needed */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-box {
+    width: 48%; /* Keep the width of each filter box as is */
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-box label {
+    margin-top: 10px;
+}
+
+.filter-box select,
+.filter-box input[type="date"],
+#price {
+    margin-top: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer; /* Pointer cursor for dropdowns and date pickers */
+}
+
+.star-rating {
+    display: flex;
+}
+
+.star {
+    font-size: 24px;
+    cursor: pointer; /* Pointer cursor for star rating */
+    color: #ccc;
+}
+
+.star.selected,
+.star.hover {
+    color: gold;
+}

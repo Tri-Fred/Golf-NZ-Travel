@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Filters.css">
+    <title>Accommodation Filters</title>
+</head>
+<body>
+    <div class="filter-container">
+        <div class="filter-box left">
+            <label for="destination">Destination:</label>
+            <select id="destination">
+                <option value="new-york">New York</option>
+                <option value="paris">Paris</option>
+                <option value="tokyo">Tokyo</option>
+            </select>
+            
+            
+            <label for="checkin">Check-In:</label>
+            <input type="date" id="checkin">
+            
+            <label for="checkout">Check-Out:</label>
+            <input type="date" id="checkout">
+        </div>
+
+        <div class="filter-box right">
+            <label for="price">Price Per Night:</label>
+            <input type="range" id="price" min="0" max="1000" step="10" oninput="updatePrice(this.value)">
+            <span id="price-value">$500</span>
+
+            <label>Guest Rating:</label>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+
+            <label for="region">Region:</label>
+            <select id="region">
+                <option value="north-america">North America</option>
+                <option value="europe">Europe</option>
+                <option value="asia">Asia</option>
+            </select>
+        </div>
+    </div>
+
+</body>
+<script>
+document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', function() {
+        const value = this.getAttribute('data-value');
+        document.querySelectorAll('.star').forEach(s => {
+            s.classList.remove('selected');
+            if (s.getAttribute('data-value') <= value) {
+                s.classList.add('selected');
+            }
+        });
+    });
+
+    star.addEventListener('mouseover', function() {
+        const value = this.getAttribute('data-value');
+        document.querySelectorAll('.star').forEach(s => {
+            s.classList.remove('hover');
+            if (s.getAttribute('data-value') <= value) {
+                s.classList.add('hover');
+            }
+        });
+    });
+
+    star.addEventListener('mouseout', function() {
+        document.querySelectorAll('.star').forEach(s => {
+            s.classList.remove('hover');
+        });
+    });
+});
+
+function updatePrice(value) {
+    document.getElementById('price-value').textContent = `$${value}`;
+}
+
+</script>
+
+</html>
