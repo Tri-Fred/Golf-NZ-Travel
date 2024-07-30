@@ -1,24 +1,216 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="styles.css">
+<html lang="en">
 
 <head>
-  <title>NZ Golf Travel</title> <!--Name of site that shows in browser tab-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NZ Golf Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+
 </head>
 
 <body>
-  <header class="header">
-    <a href="Home.html" class="Logo">NZ Golf Travel</a> <!--Home page link and heading/logo-->
-    <nav class="navbar">
-      <a href="Home.html"> Home</a>
-      <a href="RecentlyViewed.html"> Recently Viewed</a>
-      <a href="Favorites.html"> Favourites</a>
-      <a href="Account.html"> Account</a>
+    <header class="header">
+        <a href="Home.html" class="Logo">NZ Golf Travel</a>
+        <nav class="navbar">
+             <!-- Search bar added here -->
+             <div class="search-container">
+                <form id="searchForm" action="/search" method="GET">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+            <a href="Home.html">Home</a>
+            <a href="RecentlyViewed.html">Recently Viewed</a>
+            <a href="Favorites.html">Favourites</a>
+            <a href="Account.html">Account</a>
+            <div class="dropdown">
+                <button class="d-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="#">Currency</a>
+                    <a href="#">Languages</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
 
-      <div class="dropdown">
-        <button class="d-button">Menu</button>
-        <div class="dropdown-content">
+    <div class="filter-container">
+
+        <div class="filter-box left">
+            <label for="destination">Destination:</label>
+            <select id="destination">
+                <option value="New Zealand">New Zealand</option>
+            </select>
+
+            <label for="checkin">Check-In:</label>
+            <input type="date" id="checkin">
+
+            <label for="checkout">Check-Out:</label>
+            <input type="date" id="checkout">
         </div>
-      </div>
-    </nav>
-  </header>
+
+        <div class="filter-box right">
+            <label for="price">Maximum Price Per Night:</label>
+            <input type="range" id="price" min="0" max="1000" step="10" oninput="updatePrice(this.value)">
+            <span id="price-value">$500</span>
+
+            <label>Guest Rating:</label>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+
+            <label for="region">Region:</label>
+            <select id="region">
+                <option value="Northland">Northland</option>
+                <option value="Auckland">Auckland</option>
+                <option value="Waikato">Waikato</option>
+                <option value="Bay-of-Plenty">Bay of Plenty</option>
+                <option value="Gisborne">Gisborne</option>
+                <option value="Hawkes-Bay">Hawkes Bay</option>
+                <option value="Taranaki">Taranaki</option>
+                <option value="Manawatu-Whanganui">Manawatu-Whanganui</option>
+                <option value="Wellington">Wellington</option>
+                <option value="Tasman">Tasman</option>
+                <option value="Nelson">Nelson</option>
+                <option value="Marlborough">Marlborough</option>
+                <option value="West-coast">West-coast</option>
+                <option value="Canterbury">Canterbury</option>
+                <option value="Otago">Otago</option>
+                <option value="Southland">Southland</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Add this div inside the filter-container div -->
+    <div class="sort-container">
+        <label for="sort-by">Sort By:</label>
+        <select id="sort-by">
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating-asc">Rating: Low to High</option>
+            <option value="rating-desc">Rating: High to Low</option>
+        </select>
+    </div>
+
+    <div class="main-container">
+        <div class="section">
+            <div class="content-box left">
+                <img src="Images/LakefrontHotel.jpg" alt="Lakefront Hotel" class="content-image"></img>
+                <h2>The Lakefront Hotel</h2>
+                <p>Now only $240 Per night</p>
+            </div>
+            <div class="content-box left">
+                <img src="Images/hotelimg.jpeg" alt="The Luna Motel" class="content-image"></img>
+                <h2>The Luna Motel</h2>
+                <p>This is the content for the second section.</p>
+            </div>
+            <div class="content-box left">
+                <h2>Section 1.2</h2>
+                <p>This is the content for the second section.</p>
+            </div>
+            <!-- Add more content boxes as needed -->
+        </div>
+        <div class="section">
+            <div class="content-box right">
+                <h2>Interactive Map</h2>
+                <p>Coming Soon...</p>
+            </div>
+            <!-- Add more content boxes as needed -->
+        </div>
+    </div>
+
+    <script>
+        // Function to update the price value display
+        function updatePrice(value) {
+            document.getElementById('price-value').textContent = `$${value}`;
+        }
+
+        // Function to reset the price slider to the default value on page load
+        function resetPrice() {
+            const priceSlider = document.getElementById('price');
+            const defaultPrice = 500; // Default value for the slider
+
+            // Reset the price slider and display value to default
+            priceSlider.value = defaultPrice;
+            updatePrice(defaultPrice);
+        }
+
+        // Function to store the price value in localStorage
+        function storePrice() {
+            const priceSlider = document.getElementById('price');
+            localStorage.setItem('priceValue', priceSlider.value);
+        }
+
+        // Function to load the stored price value from localStorage
+        function loadStoredPrice() {
+            const storedPrice = localStorage.getItem('priceValue');
+            if (storedPrice !== null) {
+                const priceSlider = document.getElementById('price');
+                priceSlider.value = storedPrice;
+                updatePrice(storedPrice);
+            }
+        }
+
+        // Add event listeners
+        window.addEventListener('load', function () {
+            // Check if the page was loaded from a refresh
+            const navigationType = performance.getEntriesByType("navigation")[0].type;
+            if (navigationType === 'reload') {
+                resetPrice();
+            } else {
+                loadStoredPrice();
+            }
+        });
+
+        window.addEventListener('beforeunload', storePrice);
+
+        document.getElementById('price').addEventListener('input', function () {
+            updatePrice(this.value);
+            storePrice();
+        });
+
+        document.querySelectorAll('.star').forEach(star => {
+            star.addEventListener('click', function () {
+                const value = this.getAttribute('data-value');
+                document.querySelectorAll('.star').forEach(s => {
+                    s.classList.remove('selected');
+                    if (s.getAttribute('data-value') <= value) {
+                        s.classList.add('selected');
+                    }
+                });
+            });
+
+            star.addEventListener('mouseover', function () {
+                const value = this.getAttribute('data-value');
+                document.querySelectorAll('.star').forEach(s => {
+                    s.classList.remove('hover');
+                    if (s.getAttribute('data-value') <= value) {
+                        s.classList.add('hover');
+                    }
+                });
+            });
+
+            star.addEventListener('mouseout', function () {
+                document.querySelectorAll('.star').forEach(s => {
+                    s.classList.remove('hover');
+                });
+            });
+        });
+
+
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default form submission
+                document.getElementById('searchForm').submit(); // Submit the form
+            }
+        });
+    </script>
 </body>
+
+</html>
