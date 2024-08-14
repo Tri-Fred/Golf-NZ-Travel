@@ -6,21 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NZ Golf Travel</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
-
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
+        integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
 </head>
 
 <body>
     <header class="header">
         <a href="Home.html" class="Logo">NZ Golf Travel</a>
         <nav class="navbar">
-             <!-- Search bar added here -->
-             <div class="search-container">
-                <form id="searchForm" action="/search" method="GET">
+            <!-- Search bar added here -->
+            <div class="search-container">
+                <!--<form id="searchForm" action="/search" method="GET">
                     <input type="text" id="searchInput" class="search-input" placeholder="Search...">
                     <button type="submit" class="search-button">Search</button>
-                </form>
+                </form>-->
             </div>
+            <!--Navbar-->
             <a href="Home.html">Home</a>
             <a href="RecentlyViewed.html">Recently Viewed</a>
             <a href="Favorites.html">Favourites</a>
@@ -34,28 +36,24 @@
             </div>
         </nav>
     </header>
-    
-
+    <!--General container for all filters-->
     <div class="filter-container">
-
+        <!--Left filter section-->
         <div class="filter-box left">
             <label for="destination">Destination:</label>
             <select id="destination">
                 <option value="New Zealand">New Zealand</option>
             </select>
-
             <label for="checkin">Check-In:</label>
             <input type="date" id="checkin">
-
             <label for="checkout">Check-Out:</label>
-            <input type="date" id="checkout">
+            <input type="date" id="checkout"> 
         </div>
-
+        <!--Right filter section-->
         <div class="filter-box right">
             <label for="price">Maximum Price Per Night:</label>
             <input type="range" id="price" min="0" max="1000" step="10" oninput="updatePrice(this.value)">
             <span id="price-value">$500</span>
-
             <label>Guest Rating:</label>
             <div class="star-rating">
                 <span class="star" data-value="1">&#9733;</span>
@@ -64,9 +62,10 @@
                 <span class="star" data-value="4">&#9733;</span>
                 <span class="star" data-value="5">&#9733;</span>
             </div>
-
+            <!--Region drop-down box-->
             <label for="region">Region:</label>
             <select id="region">
+                <option value="All">All of New Zealand</option>
                 <option value="Northland">Northland</option>
                 <option value="Auckland">Auckland</option>
                 <option value="Waikato">Waikato</option>
@@ -86,8 +85,7 @@
             </select>
         </div>
     </div>
-
-    <!-- Add this div inside the filter-container div -->
+    <!--Sort-by Container-->
     <div class="sort-container">
         <label for="sort-by">Sort By:</label>
         <select id="sort-by">
@@ -97,120 +95,293 @@
             <option value="rating-desc">Rating: High to Low</option>
         </select>
     </div>
-
-    <div class="main-container">
-        <div class="section">
-            <div class="content-box left">
-                <img src="Images/LakefrontHotel.jpg" alt="Lakefront Hotel" class="content-image"></img>
-                <h2>The Lakefront Hotel</h2>
-                <p>Now only $240 Per night</p>
-            </div>
-            <div class="content-box left">
-                <img src="Images/hotelimg.jpeg" alt="The Luna Motel" class="content-image"></img>
-                <h2>The Luna Motel</h2>
-                <p>This is the content for the second section.</p>
-            </div>
-            <div class="content-box left">
-                <h2>Section 1.2</h2>
-                <p>This is the content for the second section.</p>
-            </div>
-            <!-- Add more content boxes as needed -->
-        </div>
-        <div class="section">
-            <div class="content-box right">
-                <h2>Interactive Map</h2>
-                <p>Coming Soon...</p>
-            </div>
-            <!-- Add more content boxes as needed -->
+    <!--Newsletter Pop-up-->
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>
+                Subscribe to our newsletter and stay up to date with our newest offers and best travel locations
+            </p>
+            <form id="subscribeForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+                <button type="submit">Subscribe</button>
+            </form>
+            <a class="close" href="#" onclick="closePopup()">Close</a>
         </div>
     </div>
 
-    <script>
-        // Function to update the price value display
-        function updatePrice(value) {
-            document.getElementById('price-value').textContent = `$${value}`;
-        }
 
-        // Function to reset the price slider to the default value on page load
-        function resetPrice() {
-            const priceSlider = document.getElementById('price');
-            const defaultPrice = 500; // Default value for the slider
+    <!--Main accommodation/golf course and interactive map sections-->
+    <div class="main-container">
+        <!--Accommodation/ golf course section-->
+        <div class="section">
 
-            // Reset the price slider and display value to default
-            priceSlider.value = defaultPrice;
-            updatePrice(defaultPrice);
-        }
+            <!--individual Accommodation/golf course information boxes-->
+            <div class="content-box left">
+                <img src="Images/LakefrontHotel.jpg" alt="Lakefront Hotel" class="content-image"></img>
+                <div class="content-header">
+                    <h2>The Lakefront Hotel</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                        <span class="star2" data-value="4">&#9733;</span>
+                        <span class="star2" data-value="5">&#9733;</span>
+                    </div>
+                    <p>Now Only $240 Per Night</p>
+                </div>
+            </div>
+            <div class="content-box left">
+                <img src="Images/hotelimg.jpeg" alt="The Luna Hotel" class="content-image"></img>
+                <div class="content-header">
+                    <h2>The Luna Hotel</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                        <span class="star2" data-value="4">&#9733;</span>
+                    </div>
+                    <p>Now Only $200 Per Night</p>
+                </div>
+            </div>
+            <div class="content-box left">
+                <img src="Images/mountwhitney.jpeg" alt="Mount Whitney Motel" class="content-image"></img>
+                <div class="content-header">
+                    <h2>Mount Whitney Motel</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                    </div>
+                    <p>Now Only $240 Per Night</p>
+                </div>
+            </div>
+            <div class="content-box left">
+                <img src="Images/millbrookacc.jpg" alt="Millbrook Resort Accommodation" class="content-image"></img>
+                <div class="content-header">
+                    <h2>Millbrook Resort</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                        <span class="star2" data-value="4">&#9733;</span>
+                        <span class="star2" data-value="5">&#9733;</span>
+                    </div>
+                    <p>Now Only $280 Per Night</p>
+                </div>
+            </div>
+            <div class="content-box left">
+                <img src="Images/millbrookgolf.jpg" alt="Mount Whitney Motel" class="content-image"></img>
+                <div class="content-header">
+                    <h2>MIllbrook Resort Golf Course</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                        <span class="star2" data-value="4">&#9733;</span>
+                    </div>
+                    <p>Now Only $175 Per Round</p>
+                </div>
+            </div>
+            <div class="content-box left">
+                <img src="Images/ChisholmLinks.jpg" alt="Chisholm Links Golf Course" class="content-image"></img>
+                <div class="content-header">
+                    <h2>Chisholm Links Golf Course</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                    </div>
+                    <p>Now Only $60 Per Round</p>
+                </div>
+            </div>
+            <div class="content-box left">
+                <img src="Images/InvercargillGC.jpg" alt="INvercargill Golf Club" class="content-image"></img>
+                <div class="content-header">
+                    <h2>Invercargill Golf Club</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                        <span class="star2" data-value="4">&#9733;</span>
+                    </div>
+                    <p>Now Only $45 Per Round</p>
+                </div>
+            </div>
+            <div class="content-box left">
+                <img src="Images/RoyalWellington.jpg" alt="Royal Wellington Golf Club" class="content-image"></img>
+                <div class="content-header">
+                    <h2>Royal Wellington Golf Course</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                        <span class="star2" data-value="4">&#9733;</span>
+                    </div>
+                    <p>Now Only $130 Per Round</p>
+                </div>
+            </div>
+            <div class="content-box left">
+                <img src="Images/TeAraiLinks.jpg" alt="Te Arai Links Golf Course" class="content-image"></img>
+                <div class="content-header">
+                    <h2>Te Arai Links Golf Course</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                        <span class="star2" data-value="4">&#9733;</span>
+                        <span class="star2" data-value="5">&#9733;</span>
+                    </div>
+                    <p>Now Only $195 Per Round</p>
+                </div>
+            </div>
+            <div class="content-box left">
+                <img src="Images/PalmSprings.jpg" alt="Palm Springs " class="content-image"></img>
+                <div class="content-header">
+                    <h2>Palm Springs Motel</h2>
+                    <div class="star-rating2">
+                        <span class="star2" data-value="1">&#9733;</span>
+                        <span class="star2" data-value="2">&#9733;</span>
+                        <span class="star2" data-value="3">&#9733;</span>
+                        <span class="star2" data-value="4">&#9733;</span>
+                    </div>
+                    <p>Now Only $160 Per Night</p>
+                </div>
+            </div>
+        </div>
+        <!--Interactive map Section-->
+        <div class="section">
+            <div class="content-box-right">
+                <h2>Interactive Map</h2>
+                <p>Coming Soon...</p>
+            </div>
+        </div>
+    </div>
 
-        // Function to store the price value in localStorage
-        function storePrice() {
-            const priceSlider = document.getElementById('price');
-            localStorage.setItem('priceValue', priceSlider.value);
-        }
+    <!--Footer Navigation Bar-->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Need help?</h3>
+                <ul class="Help">
+                    <li><a href="#" class="FAQs">FAQs</a></li>
+                    <li><a href="#" class="Delivery">Bookings</a></li>
+                    <li><a href="#" class="PaymentOptions">Payment Options</a></li>
+                    <li><a href="#" class="Returns">Refunds</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="ContactUs">
+                    <li><a href="Contact.html" class="ContactUs">Contact Us</a></li>
+                    <li><a href="#" class="Feedback">Leave Feedback</a></li>
+                    <li><a href="#" class="Reviews">Reviews</a></li>
+                    <li><a href="#" class="Social Pages">Social Pages</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul class="AboutUs">
+                    <li><a href="#" class="About">About Us</a></li>
+                    <li><a href="#" class="Info">Company Info</a></li>
+                    <li><a href="#" class="Careers">Careers</a></li>
+                    <li><a href="#" class="Offices">Our Offices</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
 
-        // Function to load the stored price value from localStorage
-        function loadStoredPrice() {
-            const storedPrice = localStorage.getItem('priceValue');
-            if (storedPrice !== null) {
-                const priceSlider = document.getElementById('price');
-                priceSlider.value = storedPrice;
-                updatePrice(storedPrice);
-            }
-        }
+</html>
 
-        // Add event listeners
-        window.addEventListener('load', function () {
-            // Check if the page was loaded from a refresh
-            const navigationType = performance.getEntriesByType("navigation")[0].type;
-            if (navigationType === 'reload') {
-                resetPrice();
-            } else {
-                loadStoredPrice();
-            }
-        });
 
-        window.addEventListener('beforeunload', storePrice);
+<script>
+    // Function to update the price value display
+    function updatePrice(value) {
+        document.getElementById('price-value').textContent = `$${value}`;
+    }
 
-        document.getElementById('price').addEventListener('input', function () {
-            updatePrice(this.value);
-            storePrice();
-        });
+    // Function to reset the price slider to the default value on page load
+    function resetPrice() {
+        const priceSlider = document.getElementById('price');
+        const defaultPrice = 500;
+        priceSlider.value = defaultPrice;
+        updatePrice(defaultPrice);
+    }
 
-        document.querySelectorAll('.star').forEach(star => {
-            star.addEventListener('click', function () {
-                const value = this.getAttribute('data-value');
-                document.querySelectorAll('.star').forEach(s => {
-                    s.classList.remove('selected');
-                    if (s.getAttribute('data-value') <= value) {
-                        s.classList.add('selected');
-                    }
-                });
+    // Reset the price slider on page load
+    window.addEventListener('load', resetPrice);
+
+    // Add event listeners for the star rating (first section)
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', function () {
+            const value = this.getAttribute('data-value');
+            document.querySelectorAll('.star').forEach(s => {
+                s.classList.remove('selected');
+                if (s.getAttribute('data-value') <= value) {
+                    s.classList.add('selected');
+                }
             });
+        });
 
-            star.addEventListener('mouseover', function () {
-                const value = this.getAttribute('data-value');
-                document.querySelectorAll('.star').forEach(s => {
-                    s.classList.remove('hover');
-                    if (s.getAttribute('data-value') <= value) {
-                        s.classList.add('hover');
-                    }
-                });
-            });
-
-            star.addEventListener('mouseout', function () {
-                document.querySelectorAll('.star').forEach(s => {
-                    s.classList.remove('hover');
-                });
+        star.addEventListener('mouseover', function () {
+            const value = this.getAttribute('data-value');
+            document.querySelectorAll('.star').forEach(s => {
+                s.classList.remove('hover');
+                if (s.getAttribute('data-value') <= value) {
+                    s.classList.add('hover');
+                }
             });
         });
 
+        star.addEventListener('mouseout', function () {
+            document.querySelectorAll('.star').forEach(s => {
+                s.classList.remove('hover');
+            });
+        });
+    });
 
-        document.getElementById('searchInput').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent default form submission
-                document.getElementById('searchForm').submit(); // Submit the form
+    window.addEventListener('load', function () {
+        const fixedRating = 5;
+        document.querySelectorAll('.star2').forEach(star => {
+            const value = star.getAttribute('data-value');
+            if (value <= fixedRating) {
+                star.classList.add('selected');
             }
         });
-    </script>
+
+        // Disable interaction for the stars in the content-box section
+        document.querySelectorAll('.star2').forEach(star => {
+            star.removeEventListener('click', function () { });
+            star.removeEventListener('mouseover', function () { });
+            star.removeEventListener('mouseout', function () { });
+        });
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            showPopup();
+        }, 500000); //Timing adjustments
+
+        document
+            .getElementById("subscribeForm")
+            .addEventListener("submit", function (e) {
+                e.preventDefault();
+                alert("Subscription successful!");
+                closePopup();
+            });
+    });
+
+    function showPopup() {
+        document.getElementById("overlay").style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
 </body>
 
 </html>

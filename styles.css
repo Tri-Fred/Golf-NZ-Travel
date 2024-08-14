@@ -44,7 +44,7 @@ header {
     color: #000;
     font-weight: 500;
     text-decoration: none;
-    margin: 0 20px; /* Uniform margin for navbar links */
+    margin: 0 20px;
     font-family: CaviarDreams;
 }
 
@@ -79,7 +79,7 @@ header {
     font-weight: 500;
     border: none;
     cursor: pointer;
-    margin: 0 20px; /* Uniform margin for dropdown button */
+    margin: 0 20px;
     font-family: CaviarDreams;
 }
 
@@ -99,7 +99,7 @@ header {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    margin: 0; /* Remove margin in dropdown links */
+    margin: 0;
 }
 
 .dropdown-content a:hover {
@@ -110,90 +110,103 @@ header {
     display: block;
 }
 
-/* Ensure the navbar container allows for flexible items */
+/*Navbar flex and vertical alignment*/
 .navbar {
     display: flex;
     align-items: center;
-    /* Center items vertically */
 }
 
-/* Search container styling */
+/* Search bar styling
+/* Search container styling 
 .search-container {
     display: flex;
     align-items: center;
     margin-left: auto;
-    /* Pushes the search bar to the right end */
-    margin-right: 20px; /* Uniform margin from the right edge */
+    /* Pushes the search bar to the right end 
+    margin-right: 20px;
 }
 
-/* Search input field */
+/* Search input field 
 .search-container input[type="text"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     width: 200px;
-    /* Adjust width as needed */
     font-family: CaviarDreams;
 }
 
-/* Search button styling */
+/*Search button styling
 .search-container button {
     background-color: #b3b3b3;
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 10px; /* Increase space between input and button */
+    margin-left: 10px;
 }
 
 .search-container button i {
     font-size: 16px;
     color: #000;
+    font-family: CaviarDreams;
 }
 
-/* Change background color on hover */
+ Change background color on hover 
 .search-container button:hover {
     background-color: #999;
+} */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/*General directions for entirety of site*/
 body {
     font-family: CaviarDreams;
     margin: 0;
     padding: 0;
     padding-top: 75px;
-    /* Add padding to the top to accommodate the fixed header */
     background-color: #f0f0f0;
     height: 300vh;
+    display: flex;
+    flex-direction: column;
+
 }
 
+/*Overruling filter-container (Grey background)*/
 .filter-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    /* Make the container span the full width of the page */
     max-width: 1200px;
-    /* Adjust as needed */
     background-color: #b3b3b3;
     border: 1px solid #ccc;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
-    /* Center the filter container and add some margin */
     position: relative;
-    /* Ensure the container is positioned relative to the body */
     top: 20px;
-    /* Position it just below the header */
     border-radius: 10px;
+    gap: 20px;
 }
 
+/*Covers main styling for both left and right filter boxes*/
 .filter-box {
-    width: 48%;
-    /* Keep the width of each filter box as is */
+    flex: 1;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/*Text headings for each adjustable filter*/
 .filter-box label {
     margin-top: 10px;
     font-weight: bold;
@@ -207,20 +220,21 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
-    /* Pointer cursor for dropdowns and date pickers */
 }
 
+/*Star filter */
 .star-rating {
     display: flex;
 }
 
+/*Star styling*/
 .star {
     font-size: 24px;
     cursor: pointer;
-    /* Pointer cursor for star rating */
     color: #ccc;
 }
 
+/*Star turns gold on hover*/
 .star.selected,
 .star.hover {
     color: gold;
@@ -229,64 +243,81 @@ body {
 /*Sort-By container*/
 .sort-container {
     width: 200px;
-    /* Adjust the width as needed */
     display: flex;
     flex-direction: column;
     margin-right: 2%;
-    /* Space between filter and sort containers */
     margin-left: 35px;
     margin-top: 30px;
     padding: 10px;
-    /* Add padding inside the container */
     background-color: #b3b3b3;
-    /* Optional: to ensure it has a background */
     border: 1px solid #ccc;
-    /* Optional: to add a border */
     border-radius: 15px;
-    /* Optional: to round the corners */
 }
 
+/*Sort-by heading text*/
 .sort-container label {
     margin-top: 10px;
     font-weight: bold;
 }
 
+/*Sort by drop-down box*/
 .sort-container select {
     margin-top: 5px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 10px;
     cursor: pointer;
-    /* Pointer cursor for dropdown */
 }
 
+/*Central information section*/
 .main-container {
     display: flex;
     flex-grow: 1;
-    /* Ensures the container stretches to fill available space */
     width: 100%;
     max-width: 1800px;
-    /* Adjust as needed */
     margin: 40px 35px;
-    /* Center the main container and add some margin */
     gap: 20px;
-    /* Increase the gap between the sections */
     height: auto;
     background-color: #b3b3b3;
     padding: 20px;
     border-radius: 20px;
 }
 
+/*General styling for both left and right sections. Keeps both styles the same*/
 .section {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    /* Each section takes up equal width */
     gap: 20px;
-    /* Increase the gap between content boxes within a section */
 }
 
+/*Accommodation/ golf course section images*/
+.content-image {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    width: 225px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/*Individual golf course/ accommodation boxes*/
 .content-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: auto;
+    position: relative;
+}
+
+/*Right section styling. ("Interactive Map Coming Soon...")*/
+.content-box-right {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -294,32 +325,239 @@ body {
     display: flex;
     flex-direction: column;
     width: auto;
-    position: relative; /* Make sure the image can be positioned absolutely */
+    height: 100%;
+    position: relative;
 }
 
-.content-image {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 225px; /* Adjust size as needed */
-    height: 150px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Add padding to the content to avoid overlapping with the image */
-.content-box h2 {
-    margin-left: 225px; /* Adjust margin to ensure text doesn't overlap the image */
-}
-
-.content-box p {
-    background-color: #4CAF50; /* Green background color */
-    color: white; /* Text color */
-    padding: 5px 10px; /* Vertical and horizontal padding */
-    border-radius: 10px; /* Rounded corners */
-    display: inline-block; /* Fit the size of the text */
+/*Content-header holds all information about each location.*/
+.content-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
     margin-left: 225px;
-    margin-right: auto; 
+    flex: 1;
+    margin-right: 20px;
+    max-width: fit-content;
+}
+
+/*Name of location*/
+.content-header h2 {
+    margin: 0;
+}
+
+/*Star rating styling*/
+.star-rating2 {
+    display: flex;
+    margin-top: 10px;
+}
+
+.star2 {
+    font-size: 24px;
+    color: #ccc;
+}
+
+.star2.selected {
+    color: gold;
+}
+
+/*Price per night/per round information*/
+.content-header p {
+    padding-top: 10px;
 }
 
 
+/* Ensure p element is styled properly */
+.content-box p {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+    max-width: fit-content;
+}
+
+/*Amenities list. To be fixed and added later
+.amenities {
+    width: 100px; 
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+}
+
+.amenities h3 {
+    margin-top: 0;
+}
+
+.amenities ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.amenities li {
+    margin-top: 10px;
+}
+*/
+
+
+
+
+/*Footer Navigation*/
+
+/*Footer background*/
+.site-footer {
+    background-color: #b3b3b3;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/*Puts everything inside background with spacing*/
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*Organizes size of each column*/
+.footer-column {
+    flex: 0 0 30%;
+    margin-right: 20px;
+    text-align: center;
+}
+
+/*Styles text within each column*/
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/*Styles text and list within footer columns*/
+.footer-column p,
+.footer-column ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/*Footer list classes (Help, Contact and About)*/
+.footer-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+/*Text inside each footer list*/
+.footer-column ul li {
+    margin-bottom: 7px;
+    position: relative;
+}
+
+/*Footer links*/
+.footer-column ul li a {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    position: relative;
+}
+
+/*Link's hover state*/
+.footer-column ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width 0.3s, transform-origin 0s;
+    transform-origin: center;
+}
+
+/*Link's hover state*/
+.footer-column ul li:hover a::before {
+    width: 100%;
+}
+
+/*Newsletter Pop-up*/
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+/*General pop-up background*/
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 400px;
+    max-height: 100%;
+    overflow-y: auto;
+    text-align: center;
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*Pop-up title*/
+.popup h2 {
+    margin-bottom: 10px;
+}
+
+/*Pop-up Text*/
+.popup p {
+    margin-bottom: 20px;
+}
+/*Email entry and label*/
+form {
+    display: flex;
+    flex-direction: column;
+}
+/*"Email" text above text input box*/
+label {
+    margin-bottom: 5px;
+}
+/*Text input box*/
+input {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+/*Subscribe button for pop-up*/
+#subscribeForm button {
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#subscribeForm button:hover {
+    background-color: #b3b3b3;
+}
+/*Pop-up close button*/
+.close {
+    color: #777;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+}
+
+.close:hover {
+    color: #333;
+}
